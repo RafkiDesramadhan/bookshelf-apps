@@ -122,7 +122,12 @@ const removeBook = (id) => {
 
 const search = (e) => {
   const title = document.getElementById("searchBookTitle").value;
-  const dataFilter = books.filter((book) => book.title === title);
+  const dataFilter = books.filter((book) => {
+    const bookTitle = book.title.toLowerCase();
+    const searchKeyword = title.toLowerCase();
+
+    return bookTitle.includes(searchKeyword);
+  });
   const incompleteBookshelfList = document.getElementById(
     "incompleteBookshelfList"
   );
